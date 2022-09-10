@@ -26,10 +26,7 @@ function draw(event) {
 socket.on("new-canvas-data", (data) => {
     let img = document.createElement("img");
     img.src = data.dataURL;
-    console.log(img);
-    ctx.drawImage(img, 0, 0);
-    // img.src = '';
-    // ctx.drawImage(img, 0, 0);
+    img.onload = () => ctx.drawImage(img, 0, 0);
 });
 
 addEventListener("mousedown", mouseDown);
